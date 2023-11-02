@@ -143,7 +143,7 @@ class NightScoutFollowManager: NSObject {
 
     
     /// download recent readings from nightScout, send result to delegate, and schedule new download
-    @objc private func download() {
+    @objc public func download(scheduleNewDownloadAfterDownload: Bool = true) {
         
         trace("in download", log: self.log, category: ConstantsLog.categoryNightScoutFollowManager, type: .info)
 

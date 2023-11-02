@@ -1040,7 +1040,16 @@ final class RootViewController: UIViewController, ObservableObject {
         }
         
         // setup bluetoothPeripheralManager
-        bluetoothPeripheralManager = BluetoothPeripheralManager(coreDataManager: coreDataManager, cgmTransmitterDelegate: self, uIViewController: self, heartBeatFunction: {self.libreViewFollowManager?.getReading()}, cgmTransmitterInfoChanged: cgmTransmitterInfoChanged)
+        bluetoothPeripheralManager = BluetoothPeripheralManager(coreDataManager: coreDataManager, cgmTransmitterDelegate: self, uIViewController: self, heartBeatFunction: {
+            
+            if UserDefaults.standard.libreViewEnabled {
+                self.libreViewFollowManager?.getReading()
+            } else {
+                self.nightScoutFollowManager?.download(scheduleNewDownloadAfterDownload: false)
+            }
+            
+            
+        }, cgmTransmitterInfoChanged: cgmTransmitterInfoChanged)
         
         // to initialize UserDefaults.standard.transmitterTypeAsString
         cgmTransmitterInfoChanged()

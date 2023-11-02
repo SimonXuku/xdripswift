@@ -29,6 +29,9 @@ class M5StackBluetoothPeripheralViewModel {
         /// should the M5Stack connect to WiFi or not
         case connectToWiFi = 5
         
+        /// should heartbeat function be called or not
+        //case heartBeat = 6
+        
     }
     
     // MARK: - private properties
