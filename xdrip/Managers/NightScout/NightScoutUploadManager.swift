@@ -182,7 +182,12 @@ public class NightScoutUploadManager: NSObject, ObservableObject {
                 
                 trace("in syncTreatmentsWithNightScout but previous sync still running. Sync will be started after finishing the previous sync", log: self.oslog, category: ConstantsLog.categoryNightScoutUploadManager, type: .info)
                 
-                nightScoutTreatmentSyncRequired = true
+                DispatchQueue.main.async {
+
+                    self.nightScoutTreatmentSyncRequired = true
+
+                }
+                    
                 
                 return
                 
