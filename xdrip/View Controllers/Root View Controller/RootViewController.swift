@@ -3427,6 +3427,8 @@ extension RootViewController:NightScoutFollowerDelegate {
                                 
                 updateWatchApp()
                 
+                loopManager?.share()
+                
             }
         }
     }
